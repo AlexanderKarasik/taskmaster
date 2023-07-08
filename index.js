@@ -1,36 +1,23 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongodb = require("./db/connect");
-const port = process.env.PORT || 8080;
-const app = express();
+var express = require('express');
+// var path = require('path');
+// var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+const mongodb = require('./db/connect');
 
-app
-  .use(bodyParser.json())
-  .use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader(
-      'Access-Control-Allow-Headers',
-      'Origin, X-Requested-With, Content-Type, Accept, Z-Key'
-    );
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    next();
-  })
+// var users = require('./routes/users');
 
-  .use(require("./routes"));
-  
-process.on('uncaughtException', (err, origin) => {
-    console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
-  });
-  
+var app = express();
+
 mongodb.initDb((err) => {
-  if (err) {
-    console.log(err);
-    
-  } else {
-    app.listen(port);
-    console.log(`Connected to DB and listening on ${port}`);
-  }
-});
+    if (err) {
+      console.log(err);
+    } 
+  });
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(cookieParser())
+
+app.use(require('./routes/index'));
 
 module.exports = app;
-

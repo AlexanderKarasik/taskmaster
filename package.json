@@ -29,7 +29,8 @@
     "passport": "^0.6.0",
     "passport-google-oauth20": "^2.0.0",
     "session": "^0.1.0",
-    "swagger-autogen": "^2.23.2",
+    "swagger": "^0.7.5",
+    "swagger-autogen": "^2.23.4",
     "swagger-ui-express": "^4.6.3",
     "validatejs": "^0.0.2",
     "validatorjs": "^3.22.1"

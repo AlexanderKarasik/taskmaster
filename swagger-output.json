@@ -14,23 +14,29 @@
     "/api-docs": {
       "get": {
         "description": "",
-        "parameters": [],
-        "responses": {}
+        "responses": {
+          "default": {
+            "description": ""
+          }
+        }
       }
     },
     "/users/": {
       "get": {
         "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/users/users": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       },
@@ -89,9 +95,6 @@
         "responses": {
           "201": {
             "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
@@ -218,7 +221,6 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
@@ -403,16 +405,19 @@
     "/teams/": {
       "get": {
         "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request"
+          }
+        }
+      }
+    },
+    "/teams/teams": {
+      "get": {
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       },
@@ -428,10 +433,10 @@
                 "teamName": {
                   "example": "any"
                 },
-                "oid": {
+                "teamLeader": {
                   "example": "any"
                 },
-                "iod": {
+                "teamMembers": {
                   "example": "any"
                 },
                 "teamProfile": {
@@ -450,9 +455,6 @@
         "responses": {
           "201": {
             "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
@@ -558,7 +560,6 @@
         "produces": [
           "application/json"
         ],
-        "parameters": [],
         "responses": {
           "200": {
             "description": "OK"
