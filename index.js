@@ -1,10 +1,18 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const mongodb = require("./db/connect");
+var express = require('express');
+// var path = require('path');
+// var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+const mongodb = require('./db/connect');
 const passport = require('passport')
 const session = require('express-session')
+
 const port = process.env.PORT || 8080;
-const app = express();
+
+
+// var users = require('./routes/users');
+
+var app = express();
+
 
 app
   .use(bodyParser.json())
@@ -33,13 +41,23 @@ app.use(passport.session())
 process.on('uncaughtException', (err, origin) => {
     console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
   });
-  
+
+
+
 mongodb.initDb((err) => {
-  if (err) {
-    console.log(err);
-    
-  } else {
-    app.listen(port);
-    console.log(`Connected to DB and listening on ${port}`);
-  }
-});
+    if (err) {
+      console.log(err);
+    } else {
+      app.listen(port);
+      console.log(`Connected to DB and listening on ${port}`);
+    }
+  });
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(cookieParser())
+
+app.use(require('./routes/index'));
+
+
+module.exports = app;
