@@ -1,6 +1,6 @@
-# Lesson 11 Class Activity Complete Code
+# Testing for taskmaster
 
-## Instructions to Run the Solution
+## Instructions to Run the App
 
 - Download or Fork this branch of code
 - Run `npm install` to install the dependencies
